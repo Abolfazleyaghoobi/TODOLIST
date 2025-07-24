@@ -1,0 +1,18 @@
+
+@import "tailwindcss";
+@font-face {
+  font-family: WinkyRough;
+  src: url("../public/font/WinkyRough.ttf") format("truetype");
+}
+@theme {
+  --font-WinkyRough:"WinkyRough";
+  --color-custom-gray:rgba(71, 71, 71, 0.463);
+  /* breakpoint */
+  --breakpoint-*: initial;
+  --breakpoint-sm: 576px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 992px;
+  --breakpoint-xl: 1200px;
+  --breakpoint-xxl: 1400px;
+}
+@custom-variant dark (&:where(.dark, .dark *));

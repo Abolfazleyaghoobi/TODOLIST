@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite App</title>
+    <link rel="stylesheet" href="./src/style.css" />
+   
+    <link
+      rel="stylesheet"
+      href="./node_modules/bootstrap-icons/font/bootstrap-icons.min.css"
+    />
+  </head>
+  <body class="font-WinkyRough">
+    <section class="container m-auto">
+      <!--~~ min with 992 -->
+      <section class="w-[900px] m-auto h-screen bg-gray-100 p-3">
+        <nav class="flex justify-between">
+          <div class="">
+            <h2 class="text-[34px]">TodoList</h2>
+          </div>
+          <div class="">
+            <h4 class="text-[25px] mt-1">Hello Ali Welcome to Todolist</h4>
+          </div>
+          <div class="">
+            <i class="bi bi-gear-fill text-[29px]"></i>
+          </div>
+        </nav>
+        <!--&&  display type & filter& new task -->
+        <div
+          class="flex bg-gray-200 justify-between items-center p-2 rounded-[9px]"
+        >
+          <!-- display type -->
+          <div class="flex items-center w-[520px]">
+            <h2>Display Type:</h2>
+            <!-- container btn -->
+            <div class="pl-3">
+              <button class="mr-[17px] bg-purple-50 p-[5px] rounded-[9px]">
+                Newest
+              </button>
+              <button class="mr-[17px] bg-purple-50 p-[5px] rounded-[9px]">
+                Oldest
+              </button>
+              <button class="mr-[17px] bg-purple-50 p-[5px] rounded-[9px]">
+                Hardest
+              </button>
+              <button class="mr-[17px] bg-purple-50 p-[5px] rounded-[9px]">
+                Easiest
+              </button>
+              <button class="mr-[17px] bg-purple-50 p-[5px] rounded-[9px]">
+                A-Z
+              </button>
+              <button class="bg-purple-50 p-[5px] rounded-[9px]">Z-A</button>
+            </div>
+          </div>
+          <!-- filter  todo -->
+          <div class="flex bg-purple-50 h-9 items-center p-2 rounded-[9px]">
+            <h2>Filer:</h2>
+            <i class="bi cursor-pointer bi-funnel-fill"></i>
+          </div>
+          <!--1 add new task -->
+          <div class="bg-purple-50 p-1 w-[110px] rounded-[9px]">
+            <button class="flex">
+              New task:
+              <span
+                id="addNewTask"
+                class="rounded-[50%] cursor-pointer ml-3 justify-center flex items-center bg-gray-300 w-6 h-6 relative"
+              >
+                <div
+                  class="rotate-[90deg] w-4 m-1 h-[4px] absolute bg-black"
+                ></div>
+                <div class="w-4 m-1 h-[4px] absolute bg-black"></div>
+              </span>
+            </button>
+          </div>
+        </div>
+        <!-- show  todo item -->
+        <section class="mt-3 p-3 h-130 rounded-[9px] bg-gray-300">
+          <ul>
+            <li
+              class="flex justify-between border-b-[black] border-b border-solid pb-2"
+            >
+              <!-- show title and Description -->
+              <div class=" relative">
+                <h1 class="font-black">ali</h1>
+                <p class="relative  w-87 h-7  overflow-hidden">
+                  
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis quo assumenda odio sequi. Error eligendi maxime nihil perspiciatis iure voluptatem, nulla doloremque, impedit aliquam porro corporis cumque eveniet soluta voluptates!
+
+
+                </p>
+              </div>
+              <!-- hard todo -->
+              <div class="relative left-[-52px] flex-col flex">
+                <!-- icon -->
+                <span class="bg-gray-300 text-right">
+                  <i class="bi bi-caret-down-fill text-[18px]"></i>
+                </span>
+                <h2 class="p-[3px] bg-amber-50 rounded-[9px]">Hard:4</h2>
+              </div>
+              <!-- edit and delet and timer -->
+              <div
+                class="justify-between items-center flex w-80 border-l-[black] border-l border-solid pl-1"
+              >
+                <!-- show timer -->
+                <div class="text-[19px]">
+                  <span>00</span>
+                  :
+                  <span>12</span>
+                  :
+                  <span>34</span>
+                </div>
+                <!-- stop and start BTN -->
+                <div class="">
+                  <button class="bg-purple-50 p-1 rounded-[9px]">
+                    Start & Stop
+                  </button>
+                </div>
+                <!-- edit and delet BTN -->
+                <div class="">
+                  <span class="text-[23px] mr-4">
+                    <i class="bi bi-pencil-fill"></i>
+                  </span>
+                  <span class="text-[23px]">
+                    <i class="bi bi-trash-fill"></i>
+                  </span>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </section>
+      </section>
+    </section>
+    <!--~ add task modal  -->
+    <section
+      id="modalTask"
+      class="absolute bg-custom-gray hidden top-0 w-full felx h-screen justify-center items-center"
+    >
+      <div class="bg-gray-200 p-3 w-100 rounded-[9px] flex flex-col">
+        <input
+        id="title"
+          class="outline-none border p-1 text-[16px] rounded-[5px]"
+          type="text"
+          placeholder="title"
+        />
+        <textarea
+        
+          placeholder="description"
+          name=""
+          id="description"
+          class="h-44 border outline-none mt-2 p-2"
+        ></textarea>
+        <!--2 Hard and Timer -->
+        <div class="mt-3">
+          <!-- Hard -->
+          <div>
+            Hard:
+            <input
+              type="text"
+              name=""
+           autocomplete="off"
+
+              class="outline-none border w-6 pl-2 rounded-[9px]"
+              maxlength="1"
+              id="hardNumber"
+            />
+          </div>
+          <!-- Timer -->
+           <!-- @@ checkbox do you want timer -->
+           <div>
+             <input  type="checkbox" name="" id="DYW">
+            <label for="DYW">Do you want timer?</label>
+           </div>
+           <!-- && input timer -->
+          <div class="pt-3 flex relative">
+            <h3 class="">timer:</h3>
+            <span class=" mx-3 ">
+              <input
+                class="outline-none text-[12px] border text-center p-1 w-7 rounded-[9px] placeholder:text-red-200 bg-gray-400"
+                type="text"
+                autocomplete="off"
+                placeholder="H"
+                maxlength="2"
+                id="hourseINP"
+                disabled
+              />
+            </span>
+            :
+            <span class=" mx-3 ">
+              <input
+                class="outline-none text-[12px] rounded-[9px] text-center border p-1 w-7 placeholder:text-red-200 bg-gray-400"
+                type="text"
+           autocomplete="off"
+             placeholder="M"
+                maxlength="2"
+                id="minINP"
+                disabled
+              />
+            </span>
+            :
+            <span class=" mx-3 ">
+              <input
+                class="outline-none rounded-[9px] text-center border text-[12px] p-1 w-7 placeholder:text-red-200 bg-gray-400"
+                type="text"
+                maxlength="2"
+           autocomplete="off"
+                id="secINP"
+              placeholder="S"
+                disabled
+               
+              />
+            </span>
+
+          </div>
+        </div>
+        <!--1 add and cancel -->
+        <div class="flex">
+          <button
+            id="addTask"
+            class="bg-gray-400 m-3 p-2 rounded-[9px] w-[50%]"
+          >
+            Add
+          </button>
+          <button
+            id="cancelTask"
+            class="bg-gray-400 m-3 p-2 rounded-[9px] w-[50%]"
+          >
+            cancel
+          </button>
+        </div>
+      </div>
+    </section>
+    <script type="module" src="./src/main.js"></script>
+  </body>
+</html>
