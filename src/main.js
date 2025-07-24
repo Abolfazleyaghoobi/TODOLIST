@@ -1,3 +1,4 @@
+import { initDB } from "./modules/createIndexDB/indexDB.js";
 import { inpValidetion } from "./modules/inpValidetion.js";
 
 const $ = document;
@@ -83,3 +84,5 @@ hardNumberINP.addEventListener("input",()=>{
 hardNumberINP.addEventListener("focus",()=>{
   hardNumberINP.select();
 })
+// init database
+initDB();
