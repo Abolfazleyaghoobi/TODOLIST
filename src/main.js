@@ -37,11 +37,10 @@ DYW.addEventListener("input", () => {
   if (!isDYW) {
     timerINP.forEach((value) => {
       value.disabled = false;
-      value.value="00"
+      value.value = "00";
       value.style.border = "2px solid green";
     });
     isDYW = true;
-    
   } else {
     timerINP.forEach((value) => {
       value.disabled = true;
@@ -54,35 +53,41 @@ DYW.addEventListener("input", () => {
 });
 // add new tadk
 addTaskBTN.addEventListener("click", () => {
-  const isGo=inpValidetion(mainINP, timerINP, isDYW);
+  const isGo = inpValidetion(mainINP, timerINP, isDYW);
   if (isGo) {
     hiddenFlex();
   }
 });
 cancelTaskBTN.addEventListener("click", hiddenFlex);
-timerINP.forEach((i)=>{
-  i.addEventListener("input",()=>{
-      if((i.id==="minINP"||i.id==="secINP")&&i.value>=59){
-      i.value="59"
-      
-      
+timerINP.forEach((i) => {
+  i.addEventListener("input", () => {
+    if (+i.value) {
+      if ((i.id === "minINP" || i.id === "secINP") && i.value >= 59) {
+        i.value = "59";
       }
-     
-  })
+    }
+    else{
+      i.value="" 
+      console.log(990);
+    }
+  });
   i.addEventListener("focus", () => {
     i.select();
   });
-})
-hardNumberINP.addEventListener("input",()=>{
-  if(hardNumberINP.value>5){
-      hardNumberINP.value="5"
-  }else if(hardNumberINP.value=="0"){
-    hardNumberINP.value="1"
+});
+hardNumberINP.addEventListener("input", () => {
+  if (+hardNumberINP.value) {
+    if (hardNumberINP.value > 5) {
+      hardNumberINP.value = "5";
+    } else if (hardNumberINP.value == "0") {
+      hardNumberINP.value = "1";
+    }
+  }else{
+    hardNumberINP.value=""
   }
-
-})
-hardNumberINP.addEventListener("focus",()=>{
+});
+hardNumberINP.addEventListener("focus", () => {
   hardNumberINP.select();
-})
+});
 // init database
 initDB();
