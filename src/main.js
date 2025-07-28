@@ -52,12 +52,49 @@ DYW.addEventListener("input", () => {
   console.log("isDYW: ", isDYW);
 });
 // add new tadk
+
 addTaskBTN.addEventListener("click", () => {
   const isGo = inpValidetion(mainINP, timerINP, isDYW);
-  if (isGo) {
+  if (isGo=="Timer") {
     hiddenFlex();
+  
+    const newValue={
+      title:titleINP.value,
+      desc:descriptionINP.value,
+      hard:+hardNumberINP.value,
+      hourse:+hourseINP.value,
+      min:+minINP.value,
+      sec:+secINP.value,
+      
+    }
+
+    //@ sent data to dataBase
+    initDB(newValue);
+    //! black inputs
+    mainINP.forEach((v)=>{
+      v.value=""
+    })
+    timerINP.forEach((v)=>{
+      v.value=""
+    })
+    // ! ____________________________________________________
+  }else if (isGo=="maim") {
+    hiddenFlex();
+    const newValue={
+      title:titleINP.value,
+      desc:descriptionINP.value,
+      hard:+hardNumberINP.value,
+    }
+    //@ sent data to dataBase
+    initDB(newValue);
+    // !blank inputs
+    mainINP.forEach((v)=>{
+      v.value=""
+    })
+    // !___________________________________________
   }
 });
+//~~ cansel btn
 cancelTaskBTN.addEventListener("click", hiddenFlex);
 timerINP.forEach((i) => {
   i.addEventListener("input", () => {
@@ -65,9 +102,8 @@ timerINP.forEach((i) => {
       if ((i.id === "minINP" || i.id === "secINP") && i.value >= 59) {
         i.value = "59";
       }
-    }
-    else{
-      i.value="" 
+    } else {
+      i.value = "";
       console.log(990);
     }
   });
@@ -82,8 +118,8 @@ hardNumberINP.addEventListener("input", () => {
     } else if (hardNumberINP.value == "0") {
       hardNumberINP.value = "1";
     }
-  }else{
-    hardNumberINP.value=""
+  } else {
+    hardNumberINP.value = "";
   }
 });
 hardNumberINP.addEventListener("focus", () => {

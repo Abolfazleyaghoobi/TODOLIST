@@ -1,12 +1,15 @@
 let db;
-export function initDB() {
+export function initDB(newValue) {
   return new Promise((res, rej) => {
     let todoDB = window.indexedDB.open("TodoDB", 2);
     todoDB.addEventListener("success", () => {
       console.log("database open successfully");
       db = todoDB.result;
-
-      addTDB();
+      if (newValue) {
+ 
+        addTDB(newValue); 
+        
+      }
       res(db);
     });
     todoDB.addEventListener("error", () => {
@@ -25,22 +28,13 @@ export function initDB() {
 }
 // transaction
 // addTDB=>add todo dataBase
-function addTDB(params) {
-  let newITEM={
-    title:"ali",
-    des:";laksjdfl;kajs;ldfkjalskjdf;lakjsdf",
-    hard:3,
-    time:{
-      h:3,
-      min:3,
-      sec:3
-    }
-  }
-  console.log(newITEM.time.h);
+function addTDB(newItem) {
+
+
   
   let transaction = db.transaction(["contentTodo"], "readwrite");
   let OBJS = transaction.objectStore("contentTodo");
-    OBJS.add(newITEM)
+    OBJS.add(newItem)
 
   
   transaction.addEventListener("complete", () => {
