@@ -20,7 +20,6 @@ const DYW = $.getElementById("DYW");
 //@ Arrays input
 const mainINP = [titleINP, descriptionINP, hardNumberINP];
 const timerINP = [hourseINP, minINP, secINP];
-
 //2 show modal add task
 SMAT.addEventListener("click", () => {
   modalTask.classList.remove("hidden");
@@ -51,46 +50,45 @@ DYW.addEventListener("input", () => {
   }
   console.log("isDYW: ", isDYW);
 });
-// add new tadk
-
+//% add new tadk
 addTaskBTN.addEventListener("click", () => {
   const isGo = inpValidetion(mainINP, timerINP, isDYW);
-  if (isGo=="Timer") {
+  if (isGo == "Timer") {
     hiddenFlex();
-  
-    const newValue={
-      title:titleINP.value,
-      desc:descriptionINP.value,
-      hard:+hardNumberINP.value,
-      hourse:+hourseINP.value,
-      min:+minINP.value,
-      sec:+secINP.value,
-      
-    }
+    const newValue = {
+      title: titleINP.value,
+      desc: descriptionINP.value,
+      hard: +hardNumberINP.value,
+      time: {
+        hourse: hourseINP.value,
+        min: minINP.value,
+        sec: secINP.value,
+      },
+    };
 
     //@ sent data to dataBase
     initDB(newValue);
     //! black inputs
-    mainINP.forEach((v)=>{
-      v.value=""
-    })
-    timerINP.forEach((v)=>{
-      v.value=""
-    })
+    mainINP.forEach((v) => {
+      v.value = "";
+    });
+    timerINP.forEach((v) => {
+      v.value = "";
+    });
     // ! ____________________________________________________
-  }else if (isGo=="maim") {
+  } else if (isGo == "maim") {
     hiddenFlex();
-    const newValue={
-      title:titleINP.value,
-      desc:descriptionINP.value,
-      hard:+hardNumberINP.value,
-    }
+    const newValue = {
+      title: titleINP.value,
+      desc: descriptionINP.value,
+      hard: +hardNumberINP.value,
+    };
     //@ sent data to dataBase
     initDB(newValue);
     // !blank inputs
-    mainINP.forEach((v)=>{
-      v.value=""
-    })
+    mainINP.forEach((v) => {
+      v.value = "";
+    });
     // !___________________________________________
   }
 });
@@ -127,3 +125,4 @@ hardNumberINP.addEventListener("focus", () => {
 });
 // init database
 initDB();
+console.log(Number("06"));

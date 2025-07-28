@@ -42,7 +42,15 @@ export function inpValidetion(mainINP, timerINP, isDYW) {
     // if were both inputs[main input,,,,,timer input] not blank
     if (isDYW && !RRNinput) {
       alertSuccessFully();
-
+      if (!mainINP[1].value) {
+        mainINP[1].value="This task has no description."
+    }
+      timerINP.forEach((i)=>{
+        const value=i.value;
+        if(value<10){
+          i.value=`0${value}`
+        }
+      })
       return "Timer";
     } else {
       // if just were main inputs not blank
