@@ -1,5 +1,6 @@
-import { initDB } from "./modules/createIndexDB/indexDB.js";
+import {  GTFDB, initDB } from "./modules/createIndexDB/indexDB.js";
 import { inpValidetion } from "./modules/inpValidetion.js";
+import { showTask } from "./modules/showTask.js";
 
 const $ = document;
 // select btn
@@ -8,6 +9,8 @@ const SMAT = $.getElementById("addNewTask");
 const modalTask = $.getElementById("modalTask");
 const addTaskBTN = $.getElementById("addTask");
 const cancelTaskBTN = $.getElementById("cancelTask");
+const conItem=$.getElementById("conItem")
+// conItem.insertAdjacentHTML("")
 // select input
 const titleINP = $.getElementById("title");
 const descriptionINP = $.getElementById("description");
@@ -34,17 +37,17 @@ function hiddenFlex() {
 let isDYW = false;
 DYW.addEventListener("input", () => {
   if (!isDYW) {
-    timerINP.forEach((value) => {
-      value.disabled = false;
-      value.value = "00";
-      value.style.border = "2px solid green";
+    timerINP.forEach((i) => {
+      i.disabled = false;
+      i.value = "00";
+      i.style.border = "2px solid green";
     });
     isDYW = true;
   } else {
-    timerINP.forEach((value) => {
-      value.disabled = true;
-      value.value = "";
-      value.style.border = "1px solid black";
+    timerINP.forEach((i) => {
+      i.disabled = true;
+      i.value = "";
+      i.style.border = "1px solid black";
     });
     isDYW = false;
   }
@@ -73,8 +76,12 @@ addTaskBTN.addEventListener("click", () => {
       v.value = "";
     });
     timerINP.forEach((v) => {
+      v.disabled = true;
       v.value = "";
+      v.style.border = "1px solid black";
     });
+    isDYW=false;
+DYW.checked  = false;
     // ! ____________________________________________________
   } else if (isGo == "maim") {
     hiddenFlex();
@@ -91,6 +98,8 @@ addTaskBTN.addEventListener("click", () => {
     });
     // !___________________________________________
   }
+showTask(conItem);
+
 });
 //~~ cansel btn
 cancelTaskBTN.addEventListener("click", hiddenFlex);
@@ -125,4 +134,5 @@ hardNumberINP.addEventListener("focus", () => {
 });
 // init database
 initDB();
-console.log(Number("06"));
+
+showTask(conItem)

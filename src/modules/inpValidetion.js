@@ -11,7 +11,6 @@ export function inpValidetion(mainINP, timerINP, isDYW) {
         timerCount++;
       }
     });
-    console.log("timerCount: ", timerCount);
   }
   // regex
   const regex = /^3$/;
@@ -24,16 +23,20 @@ export function inpValidetion(mainINP, timerINP, isDYW) {
   ) {
     alertWarning("The main inputs still remain.");
     return false;
-  } else if (mainNINP==2) {
+  } else if (mainNINP == 2) {
     // if were main inputs blank
-    mainINP.forEach((i)=>{
-      if (i.id=="title"&&i.value==""||i.id=="hardNumber"&&i.value=="") {
+    mainINP.forEach((i) => {
+      if (
+        (i.id == "title" && i.value == "") ||
+        (i.id == "hardNumber" && i.value == "")
+      ) {
         alertWarning("Some of the main inputs remain.");
         return false;
-        
       }
-      
-    })
+    });
+  } else if (mainNINP === 3) {
+    alertWarning("The main inputs still remain.");
+    return false;
   } else if (isDYW && RRNinput) {
     // if were timer inputs blank
     alertWarning("Fill at least one of the timer inputs.");
@@ -43,22 +46,30 @@ export function inpValidetion(mainINP, timerINP, isDYW) {
     if (isDYW && !RRNinput) {
       alertSuccessFully();
       if (!mainINP[1].value) {
-        mainINP[1].value="This task has no description."
-    }
-      timerINP.forEach((i)=>{
-        const value=i.value;
-        if(value<10){
-          i.value=`0${value}`
+        mainINP[1].value = "This task has no description.";
+      }
+      timerINP.forEach((i) => {
+        const value = i.value;
+        if (value < 10) {
+          if (value == "00") {
+            return "Timer";
+          } else {
+            if (value == "") {
+              i.value = "00";
+            } else {
+              i.value = `0${value}`;
+            }
+          }
         }
-      })
+      });
       return "Timer";
     } else {
       // if just were main inputs not blank
       alertSuccessFully();
-    if (!mainINP[1].value) {
-        mainINP[1].value="This task has no description."
-    }
-      
+      if (!mainINP[1].value) {
+        mainINP[1].value = "This task has no description.";
+      }
+
       return "maim";
     }
   }
