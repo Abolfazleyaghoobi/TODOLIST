@@ -51,7 +51,7 @@ function generatItemWithTimer(task) {
         <i class="bi bi-pencil-fill"></i>
       </span>
       <span class="text-[23px]">
-        <i class="bi bi-trash-fill"></i>
+        <i class="bi bi-trash-fill"  id="removeTask"></i>
       </span>
     </div>
   </div>

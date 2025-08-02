@@ -1,7 +1,7 @@
 import { initDB } from "./modules/createIndexDB/indexDB.js";
 import { inpValidetion } from "./modules/inpValidetion.js";
 import { showTask } from "./modules/showTask.js";
-
+// *______________________________________________________________________________
 const $ = document;
 // select btn
 //2 show modal add task
@@ -10,7 +10,7 @@ const modalTask = $.getElementById("modalTask");
 const addTaskBTN = $.getElementById("addTask");
 const cancelTaskBTN = $.getElementById("cancelTask");
 // container item task
-const conItem=$.getElementById("conItem")
+const conItem = $.getElementById("conItem");
 // conItem.insertAdjacentHTML("")
 // select input
 const titleINP = $.getElementById("title");
@@ -21,6 +21,9 @@ const minINP = $.getElementById("minINP");
 const secINP = $.getElementById("secINP");
 // DTW=> do you want
 const DYW = $.getElementById("DYW");
+// delet task
+export const removeTask = $.getElementById("removeTask");
+// *______________________________________________________________________________
 //@ Arrays input
 const mainINP = [titleINP, descriptionINP, hardNumberINP];
 const timerINP = [hourseINP, minINP, secINP];
@@ -41,8 +44,8 @@ function hiddenFlex() {
     v.value = "";
     v.style.border = "1px solid black";
   });
-  isDYW=false;
-DYW.checked  = false;
+  isDYW = false;
+  DYW.checked = false;
 }
 // DTW=> do you want
 let isDYW = false;
@@ -90,9 +93,9 @@ addTaskBTN.addEventListener("click", () => {
       v.value = "";
       v.style.border = "1px solid black";
     });
-    isDYW=false;
-DYW.checked  = false;
-hiddenFlex();
+    isDYW = false;
+    DYW.checked = false;
+    hiddenFlex();
 
     // ! ____________________________________________________
   } else if (isGo == "maim") {
@@ -109,13 +112,12 @@ hiddenFlex();
     });
     // !___________________________________________
     hiddenFlex();
-
   }
-showTask(conItem);
-
+  showTask(conItem);
 });
 //~~ cansel btn
 cancelTaskBTN.addEventListener("click", hiddenFlex);
+// validation inputs
 timerINP.forEach((i) => {
   i.addEventListener("input", () => {
     if (+i.value) {
@@ -124,13 +126,13 @@ timerINP.forEach((i) => {
       }
     } else {
       i.value = "";
-      console.log(990);
     }
   });
   i.addEventListener("focus", () => {
     i.select();
   });
 });
+// validation hardNumberINP
 hardNumberINP.addEventListener("input", () => {
   if (+hardNumberINP.value) {
     if (hardNumberINP.value > 5) {
@@ -147,5 +149,5 @@ hardNumberINP.addEventListener("focus", () => {
 });
 // init database
 initDB();
-
-showTask(conItem)
+// show task
+showTask(conItem);
