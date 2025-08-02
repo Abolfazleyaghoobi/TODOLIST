@@ -1,4 +1,4 @@
-import {  GTFDB, initDB } from "./modules/createIndexDB/indexDB.js";
+import { initDB } from "./modules/createIndexDB/indexDB.js";
 import { inpValidetion } from "./modules/inpValidetion.js";
 import { showTask } from "./modules/showTask.js";
 
@@ -33,6 +33,16 @@ SMAT.addEventListener("click", () => {
 function hiddenFlex() {
   modalTask.classList.add("hidden");
   modalTask.classList.remove("flex");
+  mainINP.forEach((v) => {
+    v.value = "";
+  });
+  timerINP.forEach((v) => {
+    v.disabled = true;
+    v.value = "";
+    v.style.border = "1px solid black";
+  });
+  isDYW=false;
+DYW.checked  = false;
 }
 // DTW=> do you want
 let isDYW = false;
@@ -58,7 +68,6 @@ DYW.addEventListener("input", () => {
 addTaskBTN.addEventListener("click", () => {
   const isGo = inpValidetion(mainINP, timerINP, isDYW);
   if (isGo == "Timer") {
-    hiddenFlex();
     const newValue = {
       title: titleINP.value,
       desc: descriptionINP.value,
@@ -83,9 +92,10 @@ addTaskBTN.addEventListener("click", () => {
     });
     isDYW=false;
 DYW.checked  = false;
+hiddenFlex();
+
     // ! ____________________________________________________
   } else if (isGo == "maim") {
-    hiddenFlex();
     const newValue = {
       title: titleINP.value,
       desc: descriptionINP.value,
@@ -98,6 +108,8 @@ DYW.checked  = false;
       v.value = "";
     });
     // !___________________________________________
+    hiddenFlex();
+
   }
 showTask(conItem);
 
