@@ -9,7 +9,7 @@ export function initDB(newValue) {
         addTDB(newValue);
       }
 
-      // console.log("db: ", db);  
+      // console.log("db: ", db);
       res(db);
     });
 

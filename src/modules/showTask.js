@@ -3,7 +3,7 @@ function generatItemWithTimer(task) {
   return `
     <li
   class="flex justify-between border-b-[black] border-b border-solid pb-2"
->
+  dataId="${task.id}" id="${task.id}" name="taskItem">
   <!-- show title and Description -->
   <div class=" relative">
     <h1 class="font-black">${task.title}</h1>
@@ -27,7 +27,9 @@ function generatItemWithTimer(task) {
     class="justify-between items-center flex w-80 border-l-[black] border-l border-solid pl-1"
   >
     <!-- show timer -->
- ${task.time?`
+ ${
+   task.time
+     ? `
        <div class="text-[19px]">
       <span>${task.time.hourse}</span>
       :
@@ -41,9 +43,9 @@ function generatItemWithTimer(task) {
         Start & Stop
       </button>
     </div>
-    `:""
-
-}
+    `
+     : ""
+ }
    
     <!-- edit and delet BTN -->
     <div class="">
@@ -51,7 +53,7 @@ function generatItemWithTimer(task) {
         <i class="bi bi-pencil-fill"></i>
       </span>
       <span class="text-[23px]">
-        <i class="bi bi-trash-fill"  id="removeTask"></i>
+        <i class="bi bi-trash-fill removeTask"   dataId="${task.id}"></i>
       </span>
     </div>
   </div>
@@ -60,28 +62,21 @@ function generatItemWithTimer(task) {
 }
 export async function showTask(conItem) {
   // let allTask;
-  let task = await initDB()
-    .then((res) => {
-      return GTFDB();
-    })
+  let task = await initDB().then((res) => {
+    return GTFDB();
+  });
 
   conItem.innerHTML = "";
-  console.log('task: ', task)
+  console.log("task: ", task);
 
   task.forEach((t) => {
     if (t) {
-     
-        conItem.insertAdjacentHTML(
-          "beforeend",
-          generatItemWithTimer(t)
-        );
-      
-    }
-    else{
-        conItem.innerHTML=`
+      conItem.insertAdjacentHTML("beforeend", generatItemWithTimer(t));
+    } else {
+      conItem.innerHTML = `
         <p>not task</p>
-        `
+        `;
     }
   });
-
 }
+// feat: implement task removal functionality and enhance task display logic

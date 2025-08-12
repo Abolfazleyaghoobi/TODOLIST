@@ -1,5 +1,6 @@
 import { initDB } from "./modules/createIndexDB/indexDB.js";
 import { inpValidetion } from "./modules/inpValidetion.js";
+import { RemoveModule } from "./modules/RemoveTask.js";
 import { showTask } from "./modules/showTask.js";
 // *______________________________________________________________________________
 const $ = document;
@@ -19,10 +20,12 @@ const hardNumberINP = $.getElementById("hardNumber");
 const hourseINP = $.getElementById("hourseINP");
 const minINP = $.getElementById("minINP");
 const secINP = $.getElementById("secINP");
+
 // DTW=> do you want
 const DYW = $.getElementById("DYW");
 // delet task
-export const removeTask = $.getElementById("removeTask");
+
+
 // *______________________________________________________________________________
 //@ Arrays input
 const mainINP = [titleINP, descriptionINP, hardNumberINP];
@@ -151,3 +154,5 @@ hardNumberINP.addEventListener("focus", () => {
 initDB();
 // show task
 showTask(conItem);
+// colled removeModule
+RemoveModule(conItem);
