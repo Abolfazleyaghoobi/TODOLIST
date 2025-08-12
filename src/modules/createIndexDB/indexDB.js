@@ -37,7 +37,7 @@ function addTDB(newItem) {
     console.log("successflly");
   });
 }
-// GTFDB=>getTask from dataBase
+// GTFDB=>getTask from dataBase and show in UI
 export function GTFDB() {
   return new Promise((res, rej) => {
     let arrayTask = [];
@@ -53,4 +53,22 @@ export function GTFDB() {
       }
     };
   });
+}
+// removeTask=> remove task from dataBase
+export function removeTask(newValue){
+  return new Promise((res, rej) => {
+    let transaction = db.transaction(["contentTodo"], "readwrite");
+    let OBJS = transaction.objectStore("contentTodo");
+    OBJS.clear();
+
+    newValue.forEach((item) => {
+      OBJS.add(item);
+    });
+
+    transaction.addEventListener("complete", () => {
+
+      res();
+    });
+  });
+  
 }

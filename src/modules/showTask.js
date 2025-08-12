@@ -3,7 +3,7 @@ function generatItemWithTimer(task) {
   return `
     <li
   class="flex justify-between border-b-[black] border-b border-solid pb-2"
-  dataId="${task.id}" id="${task.id}" name="taskItem">
+  data-id="${task.id}" name="taskItem">
   <!-- show title and Description -->
   <div class=" relative">
     <h1 class="font-black">${task.title}</h1>
@@ -53,7 +53,7 @@ function generatItemWithTimer(task) {
         <i class="bi bi-pencil-fill"></i>
       </span>
       <span class="text-[23px]">
-        <i class="bi bi-trash-fill removeTask"   dataId="${task.id}"></i>
+        <i class="bi bi-trash-fill removeTask"  "></i>
       </span>
     </div>
   </div>
@@ -67,7 +67,7 @@ export async function showTask(conItem) {
   });
 
   conItem.innerHTML = "";
-  console.log("task: ", task);
+  // console.log("task: ", task);
 
   task.forEach((t) => {
     if (t) {
