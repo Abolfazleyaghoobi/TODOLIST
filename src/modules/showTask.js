@@ -79,4 +79,3 @@ export async function showTask(conItem) {
     }
   });
 }
-// feat: implement task removal functionality and enhance task display logic
