@@ -1,11 +1,11 @@
 
 @import "tailwindcss";
 @font-face {
-  font-family: WinkyRough;
-  src: url("../public/font/WinkyRough.ttf") format("truetype");
+  font-family: NPIClassAval;
+  src: url("../public/font/NPIClassAval.ttf") format("truetype");
 }
 @theme {
-  --font-WinkyRough:"WinkyRough";
+  --font-NPIClassAval:"NPIClassAval";
   --color-custom-gray:rgba(71, 71, 71, 0.463);
   /* breakpoint */
   --breakpoint-*: initial;
