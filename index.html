@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vite App</title>
     <link rel="stylesheet" href="./src/style.css" />
-   
+
     <link
       rel="stylesheet"
       href="./node_modules/bootstrap-icons/font/bootstrap-icons.min.css"
@@ -17,7 +17,6 @@
       <!--~~ min with 992 -->
       <section class="w-[980px] m-auto h-screen bg-[#F4F6F8]">
         <nav class="flex items-center bg-white">
-        
           <div class="text-center w-[100%]">
             <h4 class="text-[35px] mt-1">Welcome to Todolist</h4>
           </div>
@@ -26,29 +25,76 @@
           </div>
         </nav>
         <!--&&  display type & filter& new task -->
-        <div
-          class="flex justify-between items-center p-2 rounded-[9px]"
-        >
+        <div class="flex justify-between items-center p-2 rounded-[9px]">
           <!-- display type -->
-          <div class="flex items-center w-[650px] bg-[#90CAF9] px-1 rounded-[0.5rem] shadow-[0_4px_4px_0_rgba(0,0,0,0.25)]" >
+          <div
+            class="flex items-center w-[650px] bg-[#90CAF9] px-1 rounded-[0.5rem] shadow-[0_4px_4px_0_rgba(0,0,0,0.25)]"
+          >
             <h3 class="text-[30px] p-0">Display Type:</h3>
             <div class="h-[12] bg-amb0er-200 ml-2 p-1">
-              <button class="text-[20px] text-[#1976D2] bg-[#E3F2FD] rounded-[9px] w-[70px] shadow-[-4px_5px_3px_#3D3D3D94]">Newest</button>
-              <button class="text-[22px] text-[#D84315] bg-[#FBE9E7] rounded-[9px] w-[70px] shadow-[-4px_5px_3px_#3D3D3D94] ml-2">Oldest</button>
-              <button class="text-[20px] text-[#388E3C] bg-[#E8F5E9] rounded-[9px] w-[70px] shadow-[-4px_5px_3px_#3D3D3D94] ml-2">Easy</button>
-              <button class="text-[20px] text-[#C62828] bg-[#FFEBEE] rounded-[9px] w-[70px] shadow-[-4px_5px_3px_#3D3D3D94] ml-2">Hard</button>
-              <button class="text-[20px] text-[#FBC02D] bg-[#FFFDE7] rounded-[9px] w-[70px] shadow-[-4px_5px_3px_#3D3D3D94] ml-2">A-Z</button>
-              <button class="text-[20px] text-[#F57F17] bg-[#FFFDE7] rounded-[9px] w-[70px] shadow-[-4px_5px_3px_#3D3D3D94] ml-2">Z-A</button>
+              <button
+                class="text-[20px] text-[#1976D2] bg-[#E3F2FD] rounded-[9px] w-[70px] shadow-[-4px_5px_3px_#3D3D3D94]"
+              >
+                Newest
+              </button>
+              <button
+                class="text-[22px] text-[#D84315] bg-[#FBE9E7] rounded-[9px] w-[70px] shadow-[-4px_5px_3px_#3D3D3D94] ml-2"
+              >
+                Oldest
+              </button>
+              <button
+                class="text-[20px] text-[#388E3C] bg-[#E8F5E9] rounded-[9px] w-[70px] shadow-[-4px_5px_3px_#3D3D3D94] ml-2"
+              >
+                Easy
+              </button>
+              <button
+                class="text-[20px] text-[#C62828] bg-[#FFEBEE] rounded-[9px] w-[70px] shadow-[-4px_5px_3px_#3D3D3D94] ml-2"
+              >
+                Hard
+              </button>
+              <button
+                class="text-[20px] text-[#FBC02D] bg-[#FFFDE7] rounded-[9px] w-[70px] shadow-[-4px_5px_3px_#3D3D3D94] ml-2"
+              >
+                A-Z
+              </button>
+              <button
+                class="text-[20px] text-[#F57F17] bg-[#FFFDE7] rounded-[9px] w-[70px] shadow-[-4px_5px_3px_#3D3D3D94] ml-2"
+              >
+                Z-A
+              </button>
               <!-- icon -->
             </div>
-            <div class="w-[33px] ">
-                <img class="w-[56] rotate-[-90deg]" src="./public/icons/icons8_collapse_arrow_1.svg" alt="">
+            <div class="w-[33px]">
+              <img
+                class="w-[56] rotate-[-90deg]"
+                src="./public/icons/icons8_collapse_arrow_1.svg"
+                alt=""
+              />
             </div>
           </div>
-          <!-- filter  todo -->
-          <div class="flex bg-purple-50 h-9 items-center p-2 rounded-[9px]">
-            <h2>Filer:</h2>
-            <i class="bi cursor-pointer bi-funnel-fill"></i>
+          <!--~ filter  todo -->
+          <div
+            class="flex flex-col w-27 bg-[#90CAF9]  overflow-hidden  group"
+          >
+            <div class="flex items-center justify-between h-9 relative pl-1 group  " >
+              <h2 class="text-[30px]">Filer:</h2>
+              <img
+                class="w-[52px] rotate-[180deg] " 
+                src="./public/icons/icons8_collapse_arrow_1.svg"
+                alt=""
+              />
+            </div>
+            <!-- checkBox inpute -->
+            <div class="p-1 absolute top-26 w-27 bg-[#90CAF9] h-21 transition  duration-[0.3s] invisible opacity-0  pl-2 rounded-b-[9px] z-909 group-hover:opacity-100 group-hover:visible">
+              <div class="flex items-center bg-[#FFF3E0] pl-1 shadow-[-4px_5px_3px_#3D3D3D94] rounded-[0.5rem]">
+                <input type="checkbox" name="" id="Incomplete" />
+                <label class="text-[20px] ml-1 text-[#FB8C00] " for="Incomplete">Incomplete</label>
+              </div>
+              <div class="flex items-center bg-[#E8F5E9] shadow-[-4px_5px_3px_#3D3D3D94] pl-1 mt-2 rounded-[0.5rem]">
+                <input type="checkbox" name="" id="Completed" />
+                <label class="text-[20px] ml-1 text-[#388E3C]" for="Completed">Completed</label>
+              </div>
+            </div>
           </div>
           <!--1 add new task -->
           <div class="bg-purple-50 p-1 w-[110px] rounded-[9px]">
@@ -68,26 +114,23 @@
         </div>
         <!-- show  todo item -->
         <section class="mt-3 p-3 h-130 rounded-[9px]">
-          <ul id="conItem">
-         
-          </ul>
+          <ul id="conItem"></ul>
         </section>
       </section>
     </section>
     <!--~ add task modal  -->
     <section
       id="modalTask"
-      class="absolute bg-custom-gray hidden  top-0 w-full felx h-screen justify-center items-center"
+      class="absolute bg-custom-gray hidden top-0 w-full felx h-screen justify-center items-center"
     >
       <div class="bg-gray-200 p-3 w-100 rounded-[9px] flex flex-col">
         <input
-        id="title"
+          id="title"
           class="outline-none border p-1 text-[16px] rounded-[5px]"
           type="text"
           placeholder="title"
         />
         <textarea
-        
           placeholder="description(Optional)"
           name=""
           id="description"
@@ -101,23 +144,22 @@
             <input
               type="text"
               name=""
-           autocomplete="off"
-
+              autocomplete="off"
               class="outline-none border w-6 pl-2 rounded-[9px]"
               maxlength="1"
               id="hardNumber"
             />
           </div>
           <!-- Timer -->
-           <!-- @@ checkbox do you want timer -->
-           <div>
-             <input  type="checkbox" name="" id="DYW">
+          <!-- @@ checkbox do you want timer -->
+          <div>
+            <input type="checkbox" name="" id="DYW" />
             <label for="DYW">Do you want timer?</label>
-           </div>
-           <!-- && input timer -->
+          </div>
+          <!-- && input timer -->
           <div class="pt-3 flex relative">
             <h3 class="">timer:</h3>
-            <span class=" mx-3 ">
+            <span class="mx-3">
               <input
                 class="outline-none text-[12px] border text-center p-1 w-7 rounded-[9px] placeholder:text-red-200 bg-gray-400"
                 type="text"
@@ -129,31 +171,29 @@
               />
             </span>
             :
-            <span class=" mx-3 ">
+            <span class="mx-3">
               <input
                 class="outline-none text-[12px] rounded-[9px] text-center border p-1 w-7 placeholder:text-red-200 bg-gray-400"
                 type="text"
-           autocomplete="off"
-             placeholder="M"
+                autocomplete="off"
+                placeholder="M"
                 maxlength="2"
                 id="minINP"
                 disabled
               />
             </span>
             :
-            <span class=" mx-3 ">
+            <span class="mx-3">
               <input
                 class="outline-none rounded-[9px] text-center border text-[12px] p-1 w-7 placeholder:text-red-200 bg-gray-400"
                 type="text"
                 maxlength="2"
-           autocomplete="off"
+                autocomplete="off"
                 id="secINP"
-              placeholder="S"
+                placeholder="S"
                 disabled
-               
               />
             </span>
-
           </div>
         </div>
         <!--1 add and cancel -->
