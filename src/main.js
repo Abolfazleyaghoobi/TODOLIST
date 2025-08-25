@@ -23,8 +23,10 @@ const secINP = $.getElementById("secINP");
 
 // DTW=> do you want
 const DYW = $.getElementById("DYW");
-// delet task
-
+// show more desc icon
+const showMoreDesc=$.getElementById("showDesc")
+// show content desc
+const contentDescTask=$.querySelector(".contentDescTask")
 
 // *______________________________________________________________________________
 //@ Arrays input
@@ -78,6 +80,7 @@ addTaskBTN.addEventListener("click", () => {
       title: titleINP.value,
       desc: descriptionINP.value,
       hard: +hardNumberINP.value,
+      isCompleted:false,
       time: {
         hourse: hourseINP.value,
         min: minINP.value,
@@ -156,3 +159,19 @@ initDB();
 showTask(conItem);
 // colled removeModule
 RemoveModule(conItem);
+// && show more desc icon
+let isOpen=false;
+showMoreDesc.addEventListener("click",(e)=>{
+  if (!isOpen) {
+    showMoreDesc.style.transform="rotate(0deg)"
+    const fullHeight=contentDescTask.scrollHeight;
+    contentDescTask.style.height=fullHeight+"px";
+    isOpen=true
+  }else{
+    showMoreDesc.style.transform="rotate(-180deg)"
+
+    contentDescTask.style.height="0px";
+    isOpen=false
+  }
+  
+})

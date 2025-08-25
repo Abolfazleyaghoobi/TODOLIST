@@ -11,6 +11,11 @@
       rel="stylesheet"
       href="./node_modules/bootstrap-icons/font/bootstrap-icons.min.css"
     />
+    <style>
+      .showContentDescription{
+        transform: rotate(-180deg);
+      }
+    </style>
   </head>
   <body class="font-NPIClassAval bg-sky-100">
     <section class="container m-auto">
@@ -129,9 +134,86 @@
         <!-- show  todo item -->
         <section class="mt-3 p-3 h-130 rounded-[9px]">
           <ul id="conItem">
-        
-            
-          
+            <li class="border rounded-xl p-4 mb-4 bg-white shadow-sm flex">
+              <!-- check box -->
+              <div class=" pt-4 pr-3">
+                <input
+                  class="scale-150 accent-green-600"
+                  type="checkbox"
+                  name=""
+                  id="task1"
+                />
+              </div>
+              <div>
+                <!-- Header -->
+                <div class="flex justify-between items-center">
+                  <h3 class="text-[30px] font-bold">Title</h3>
+
+                  <div class="flex items-center gap-2">
+                    <span
+                      class="bg-teal-100 text-teal-800 px-2 py-1 rounded text-[20px]"
+                      >Hard: <b class="font-Laila">3</b></span
+                    >
+                    <span
+                      class="flex bg-cyan-100 text-gray-800 px-2 py-1 rounded text-[20px]"
+                      >Countdown:
+                      <b class="font-Laila ml-1">
+                        <span>00</span>
+                        :
+                        <span>00</span>
+                        :
+                        <span>00</span>
+                      </b>
+                    </span>
+
+                    <button
+                      class="px-3 py-1 bg-gray-200 rounded hover:bg-gray-300 text-[20px] relative group"
+                    >
+                      S&S
+                      <div
+                        class="absolute text-white bg-gray-700 w-24 rounded-[9px] p-1 top-[-42px] right-[-43px] opacity-0 invisible group-hover:opacity-100 group-hover:visible group-hover:right-[-26px] transition-all duration-300"
+                      >
+                        Start And Stop
+                      </div>
+                    </button>
+                    <button
+                      class="px-3 py-1 bg-yellow-100 rounded hover:bg-yellow-200 text-[20px]"
+                    >
+                      Edit
+                    </button>
+                    <button
+                      class="px-3 py-1 bg-red-500 text-white rounded hover:bg-red-600 text-[20px] removeTask"
+                    >
+                      Delete
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Description -->
+                <div class="mt-3 bg-yellow-50 rounded p-3">
+                  <div class="flex justify-between items-center cursor-pointer">
+                    <span class="font-semibold text-[25px] text-gray-800"
+                      >Description</span
+                    >
+                    <span class="text-gray-600">
+                      <img
+                        class="w-12 showContentDescription ease-linear transition-all duration-500" 
+                        src="./public/icons/icons8_collapse_arrow_1.svg"
+                        alt=""
+                        id="showDesc"
+                      />
+                    </span>
+                  </div>
+                  <p class="text-[20px] text-gray-700 mt-2 h-0 overflow-hidden  contentDescTask transition-all duration-500">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                    do eiusmod tempor incididunt ut labore et dolore magna
+                    aliqua. Egestas purus viverra accumsan in nisl nisi. Arcu
+                    cursus vitae congue mauris rhoncus aenean vel elit
+                    scelerisque in egestas erat imperdiet...
+                  </p>
+                </div>
+              </div>
+            </li>
           </ul>
         </section>
       </section>
@@ -231,7 +313,7 @@
         </div>
       </div>
     </section>
-    
+
     <script type="module" src="./src/main.js"></script>
   </body>
 </html>
