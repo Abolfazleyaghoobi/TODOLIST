@@ -1,64 +1,70 @@
 import { GTFDB, initDB } from "./createIndexDB/indexDB.js";
 function generatItemWithTimer(task) {
+  console.log('task: ', task);
   return `
-    <li
-  class="flex justify-between border-b-[black] border-b border-solid pb-2"
-  data-id="${task.id}" name="taskItem">
-  <!-- show title and Description -->
-  <div class=" relative">
-    <h1 class="font-black">${task.title}</h1>
-    <p class="relative  w-87 h-7  overflow-hidden">
-      
-    ${task.desc}
+    <li class="border rounded-xl p-4 mb-4 bg-white shadow-sm">
+                <!-- Header -->
+                <div class="flex justify-between items-center">
+                  <h3 class="text-[30px] font-bold">${task.title}</h3>
 
+                  <div class="flex items-center gap-2">
+                    <span
+                      class="bg-teal-100 text-teal-800 px-2 py-1 rounded text-[20px]"
+                      >Hard: <b class="font-Laila">${task.hard}</b></span
+                    >
+                    ${
+                      task.time?`
+                      <span
+                      class="flex bg-cyan-100 text-gray-800 px-2 py-1 rounded text-[20px]"
+                      >Countdown:
+                      <b class="font-Laila ml-1">
+                        <span>${task.time.hourse}</span>
+                        :
+                        <span>${task.time.min}</span>
+                        :
+                        <span>${task.time.sec}</span>
+                      </b>
+                    </span>
 
-    </p>
-  </div>
-  <!-- hard todo -->
-  <div class="relative left-[-52px] flex-col flex">
-    <!-- icon -->
-    <span class="bg-gray-300 text-right">
-      <i class="bi bi-caret-down-fill text-[18px]"></i>
-    </span>
-    <h2 class="p-[3px] bg-amber-50 rounded-[9px]">Hard:${task.hard}</h2>
-  </div>
-  <!-- edit and delet and timer -->
-  <div
-    class="justify-between items-center flex w-80 border-l-[black] border-l border-solid pl-1"
-  >
-    <!-- show timer -->
- ${
-   task.time
-     ? `
-       <div class="text-[19px]">
-      <span>${task.time.hourse}</span>
-      :
-      <span>${task.time.min}</span>
-      :
-      <span>${task.time.sec}</span>
-    </div>
-     <!-- stop and start BTN -->
-    <div class="">
-      <button class="bg-purple-50 p-1 rounded-[9px]">
-        Start & Stop
-      </button>
-    </div>
-    `
-     : ""
- }
-   
-    <!-- edit and delet BTN -->
-    <div class="">
-      <span class="text-[23px] mr-4">
-        <i class="bi bi-pencil-fill"></i>
-      </span>
-      <span class="text-[23px]">
-        <i class="bi bi-trash-fill removeTask"  "></i>
-      </span>
-    </div>
-  </div>
-</li>
-    `;
+                      `:""
+                    }
+                    <button
+                      class="px-3 py-1 bg-gray-200 rounded hover:bg-gray-300 text-[20px] relative group"
+                    >
+                      S&S
+                      <div class="absolute text-white bg-gray-700 w-24 rounded-[9px] p-1 top-[-42px] right-[-43px] opacity-0 invisible group-hover:opacity-100 group-hover:visible group-hover:right-[-26px] transition-all duration-300">
+                        Start And Stop
+                      </div>
+                    </button>
+                    <button
+                      class="px-3 py-1 bg-yellow-100 rounded hover:bg-yellow-200 text-[20px]"
+                    >
+                      Edit
+                    </button>
+                    <button
+                      class="px-3 py-1 bg-red-500 text-white rounded hover:bg-red-600 text-[20px] removeTask  "
+                    >
+                      Delete
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Description -->
+                <div class="mt-3 bg-yellow-50 rounded p-3">
+                  <div class="flex justify-between items-center cursor-pointer">
+                    <span class="font-semibold text-[25px] text-gray-800"
+                      >Description</span
+                    >
+                    <span class="text-gray-600">
+                      <img class="w-12" src="./public/icons/icons8_collapse_arrow_1.svg" alt="">
+                    </span>
+                  </div>
+                  <p class="text-[20px] text-gray-700 mt-2">
+                   ${task.desc}
+                  </p>
+                </div>
+              </li>
+  `;
 }
 export async function showTask(conItem) {
   // let allTask;
@@ -66,7 +72,7 @@ export async function showTask(conItem) {
     return GTFDB();
   });
 
-  conItem.innerHTML = "";
+  // conItem.innerHTML = "";
   // console.log("task: ", task);
 
   task.forEach((t) => {

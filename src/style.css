@@ -4,8 +4,13 @@
   font-family: NPIClassAval;
   src: url("../public/font/NPIClassAval.ttf") format("truetype");
 }
+@font-face {
+  font-family: Laila;
+  src: url("../public/font/Laila.ttf") format("truetype");
+}
 @theme {
   --font-NPIClassAval:"NPIClassAval";
+  --font-Laila:"Laila";
   --color-custom-gray:rgba(71, 71, 71, 0.463);
   /* breakpoint */
   --breakpoint-*: initial;
