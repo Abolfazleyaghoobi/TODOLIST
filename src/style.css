@@ -21,3 +21,6 @@
   --breakpoint-xxl: 1400px;
 }
 @custom-variant dark (&:where(.dark, .dark *));
+.aoli{
+  background: #9aff83;
+}

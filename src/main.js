@@ -1,5 +1,6 @@
 import { initDB } from "./modules/createIndexDB/indexDB.js";
 import { inpValidetion } from "./modules/inpValidetion.js";
+import isCompleted from "./modules/isCompleted.js";
 import { RemoveModule } from "./modules/RemoveTask.js";
 import { showTask } from "./modules/showTask.js";
 // *______________________________________________________________________________
@@ -12,6 +13,8 @@ const addTaskBTN = $.getElementById("addTask");
 const cancelTaskBTN = $.getElementById("cancelTask");
 // container item task
 const conItem = $.getElementById("conItem");
+const conItemChild = $.querySelectorAll("#conItem>li");
+
 // conItem.insertAdjacentHTML("")
 // select input
 const titleINP = $.getElementById("title");
@@ -24,9 +27,11 @@ const secINP = $.getElementById("secINP");
 // DTW=> do you want
 const DYW = $.getElementById("DYW");
 // show more desc icon
-const showMoreDesc=$.getElementById("showDesc")
+const showMoreDesc = $.querySelector("#showDesc");
 // show content desc
-const contentDescTask=$.querySelector(".contentDescTask")
+const contentDescTask = $.querySelector("#contentDescTask");
+// check task
+const checkTask = $.getElementById("checkTask");
 
 // *______________________________________________________________________________
 //@ Arrays input
@@ -80,7 +85,7 @@ addTaskBTN.addEventListener("click", () => {
       title: titleINP.value,
       desc: descriptionINP.value,
       hard: +hardNumberINP.value,
-      isCompleted:false,
+      isCompleted: false,
       time: {
         hourse: hourseINP.value,
         min: minINP.value,
@@ -160,18 +165,23 @@ showTask(conItem);
 // colled removeModule
 RemoveModule(conItem);
 // && show more desc icon
-let isOpen=false;
-showMoreDesc.addEventListener("click",(e)=>{
-  if (!isOpen) {
-    showMoreDesc.style.transform="rotate(0deg)"
-    const fullHeight=contentDescTask.scrollHeight;
-    contentDescTask.style.height=fullHeight+"px";
-    isOpen=true
-  }else{
-    showMoreDesc.style.transform="rotate(-180deg)"
+conItem.addEventListener("click", (e) => {
+  if (e.target.id === "showDesc") {
+    const div = e.target.parentElement.parentElement;
+    const p = div.nextElementSibling;
 
-    contentDescTask.style.height="0px";
-    isOpen=false
+    // چرخش آیکن
+    e.target.classList.toggle("rotate-180");
+
+    // باز و بسته کردن توضیحات
+    if (p.style.height && p.style.height !== "0px") {
+      p.style.height = "0px";
+    } else {
+      p.style.height = p.scrollHeight + "px";
+    }
   }
-  
-})
+});
+// 
+
+// run func isCompleted
+isCompleted(conItemChild, checkTask);
