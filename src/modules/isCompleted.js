@@ -14,11 +14,14 @@ async function isCompleted(e) {
       task.isCompleted = true;
       removeTask(res);
       e.target.parentElement.parentElement.style.background = "#B9F8CF";
+    }else{
+      task.isCompleted = false;
+      removeTask(res);
+      e.target.parentElement.parentElement.style.background = "#FFFFFF";
     }
  
   }
 }
-// feat: implement task completion functionality with checkbox and update task display
 
 
 

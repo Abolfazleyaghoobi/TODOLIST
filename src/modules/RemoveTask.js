@@ -10,11 +10,14 @@ export async function RemoveModule(conItem) {
     if (e.target.classList.contains("removeTask")) {
       const taskItem = e.target.closest("li");
 
-      const dataId = taskItem.getAttribute("data-id");
+      const id = taskItem.id
 
-      task = task.filter((t) => t.id !== +dataId);
+      task = task.filter((t) => t.id !== +id);
      removeTask(task)
      showTask(conItem)
+
     }
+    console.log(e.target);
+    
   });
 }

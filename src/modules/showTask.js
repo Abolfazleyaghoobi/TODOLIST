@@ -1,6 +1,6 @@
 import { GTFDB, initDB } from "./createIndexDB/indexDB.js";
 function generatItemWithTimer(task) {
-  console.log('task: ', task);
+
  
   // return `
   //   <li class="border rounded-xl p-4 mb-4 bg-white shadow-sm">
@@ -120,7 +120,7 @@ return `
                       Edit
                     </button>
                     <button
-                      class="px-3 py-1 bg-red-500 text-white rounded hover:bg-red-600 text-[20px] removeTask"
+                      class="px-3 py-1 bg-red-500 text-white rounded hover:bg-red-600 text-[20px] removeTask "
                     >
                       Delete
                     </button>
