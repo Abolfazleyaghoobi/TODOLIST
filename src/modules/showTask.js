@@ -1,5 +1,6 @@
 import { GTFDB, initDB } from "./createIndexDB/indexDB.js";
 function generatItemWithTimer(task) {
+  console.log('task: ', task);
  
   // return `
   //   <li class="border rounded-xl p-4 mb-4 bg-white shadow-sm">
@@ -66,13 +67,14 @@ function generatItemWithTimer(task) {
   //             </li>
   // `;
 return `
- <li class="border rounded-xl p-4 mb-4 bg-white shadow-sm flex">
+ <li class="border rounded-xl p-4 mb-4  ${task.isCompleted?"bg-green-200":"bg-white"}  shadow-sm flex " id='${task.id}'>
               <!-- check box -->
-              <div class=" pt-4 pr-3">
+              <div class=" pt-4 pr-3" >
                 <input
                   class="scale-150 accent-green-600"
                   type="checkbox"
                   name=""
+                  ${task.isCompleted?"checked":""}
                   id="checkTask"
                 />
               </div>

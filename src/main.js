@@ -13,7 +13,7 @@ const addTaskBTN = $.getElementById("addTask");
 const cancelTaskBTN = $.getElementById("cancelTask");
 // container item task
 const conItem = $.getElementById("conItem");
-const conItemChild = $.querySelectorAll("#conItem>li");
+const conItemChild = $.querySelector("#conItem>li");
 
 // conItem.insertAdjacentHTML("")
 // select input
@@ -26,12 +26,9 @@ const secINP = $.getElementById("secINP");
 
 // DTW=> do you want
 const DYW = $.getElementById("DYW");
-// show more desc icon
-const showMoreDesc = $.querySelector("#showDesc");
-// show content desc
-const contentDescTask = $.querySelector("#contentDescTask");
-// check task
-const checkTask = $.getElementById("checkTask");
+
+// // check task
+// const checkTask = $.getElementById("checkTask");
 
 // *______________________________________________________________________________
 //@ Arrays input
@@ -114,6 +111,8 @@ addTaskBTN.addEventListener("click", () => {
       title: titleINP.value,
       desc: descriptionINP.value,
       hard: +hardNumberINP.value,
+      isCompleted: false,
+
     };
     //@ sent data to dataBase
     initDB(newValue);
@@ -180,8 +179,11 @@ conItem.addEventListener("click", (e) => {
       p.style.height = p.scrollHeight + "px";
     }
   }
+// initDB();
+
+  isCompleted(e);
 });
 // 
 
 // run func isCompleted
-isCompleted(conItemChild, checkTask);
+
