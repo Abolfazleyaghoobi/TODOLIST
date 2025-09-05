@@ -20,4 +20,4 @@ export async function RemoveModule(conItem) {
     console.log(e.target);
     
   });
-}
+} 

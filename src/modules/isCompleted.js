@@ -1,4 +1,5 @@
 import { initDB, GTFDB, removeTask } from "./createIndexDB/indexDB";
+import { showTask } from "./showTask";
 
 async function isCompleted(e) {
   const id = e.target.id;
@@ -14,10 +15,12 @@ async function isCompleted(e) {
       task.isCompleted = true;
       removeTask(res);
       e.target.parentElement.parentElement.style.background = "#B9F8CF";
+      // showTask(conItem);
     }else{
       task.isCompleted = false;
       removeTask(res);
       e.target.parentElement.parentElement.style.background = "#FFFFFF";
+      // showTask(conItem);
     }
  
   }
