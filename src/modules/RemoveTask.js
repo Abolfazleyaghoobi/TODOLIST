@@ -2,22 +2,28 @@ import { GTFDB, initDB, removeTask } from "./createIndexDB/indexDB";
 import { showTask } from "./showTask";
 
 export async function RemoveModule(conItem) {
-  let task = await initDB().then((res) => {
-    return GTFDB();
-  });
+  
+  conItem.addEventListener("click",async (e) => {
+    let task = await initDB().then((res) => {
+      return GTFDB();
+    });
+    const id=e.target.id;
+ 
 
-  conItem.addEventListener("click", (e) => {
-    if (e.target.classList.contains("removeTask")) {
-      const taskItem = e.target.closest("li");
+    // removeTask
+    if (id==="removeTask") {
+      const taskItem = e.target.parentElement.parentElement.parentElement.parentElement;
 
-      const id = taskItem.id
 
-      task = task.filter((t) => t.id !== +id);
+      const id = +taskItem.id
+      console.log('id: ', id);
+
+      task = task.filter((t) => t.id !== id);
      removeTask(task)
      showTask(conItem)
 
     }
-    console.log(e.target);
+   
     
   });
 } 
