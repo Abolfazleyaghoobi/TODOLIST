@@ -3,6 +3,7 @@ import { inpValidetion } from "./modules/inpValidetion.js";
 import isCompleted from "./modules/isCompleted.js";
 import { RemoveModule } from "./modules/RemoveTask.js";
 import { showTask } from "./modules/showTask.js";
+import timerTask from "./modules/timerTask.js";
 // *______________________________________________________________________________
 const $ = document;
 // select btn
@@ -74,8 +75,8 @@ DYW.addEventListener("input", () => {
   }
   console.log("isDYW: ", isDYW);
 });
-//% add new tadk
-addTaskBTN.addEventListener("click", () => {
+//! add new task function
+const addNewTask=()=>{
   const isGo = inpValidetion(mainINP, timerINP, isDYW);
   if (isGo == "Timer") {
     const newValue = {
@@ -104,6 +105,7 @@ addTaskBTN.addEventListener("click", () => {
     isDYW = false;
     DYW.checked = false;
     hiddenFlex();
+    showTask(conItem);
 
     // ! ____________________________________________________
   } else if (isGo == "maim") {
@@ -122,9 +124,21 @@ addTaskBTN.addEventListener("click", () => {
     });
     // !___________________________________________
     hiddenFlex();
+    showTask(conItem);
   }
-  showTask(conItem);
+}
+//% add new tadk
+addTaskBTN.addEventListener("click", () => {
+addNewTask();
 });
+// add new task tap Enter
+window.addEventListener( "keydown",(e)=>{
+
+  if (e.key==="Enter") {
+    addNewTask();
+  }
+  
+})
 //~~ cansel btn
 cancelTaskBTN.addEventListener("click", hiddenFlex);
 // validation inputs
@@ -182,6 +196,7 @@ conItem.addEventListener("click", (e) => {
 // initDB();
 
   isCompleted(e);
+  timerTask(e,conItem)
 });
 // 
 

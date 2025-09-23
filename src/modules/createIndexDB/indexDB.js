@@ -55,20 +55,67 @@ export function GTFDB() {
   });
 }
 // removeTask=> remove task from dataBase
-export function removeTask(newValue){
+// removeTask => remove a specific task by id
+export function removeTask(id) {
   return new Promise((res, rej) => {
     let transaction = db.transaction(["contentTodo"], "readwrite");
     let OBJS = transaction.objectStore("contentTodo");
-    OBJS.clear();
 
-    newValue.forEach((item) => {
-      OBJS.add(item);
-    });
+    let request = OBJS.delete(id);
 
-    transaction.addEventListener("complete", () => {
-
+    request.onsuccess = () => {
+      console.log(`Task with id ${id} removed`);
       res();
-    });
+    };
+
+    request.onerror = (e) => {
+      console.error("Error removing task:", e.target.error);
+      rej(e.target.error);
+    };
   });
+}
+
+
+
+
+
+// export function removeTask(newValue){
+//   return new Promise((res, rej) => {
+//     let transaction = db.transaction(["contentTodo"], "readwrite");
+//     let OBJS = transaction.objectStore("contentTodo");
+//     OBJS.clear();
+
+//     newValue.forEach((item) => {
+//       OBJS.add(item);
+//     });
+
+//     transaction.addEventListener("complete", () => {
+
+//       res();
+//     });
+//   });
   
+// }
+
+
+
+
+// updateTask => update a specific task
+export function updateTask(task) {
+  return new Promise((res, rej) => {
+    let transaction = db.transaction(["contentTodo"], "readwrite");
+    let OBJS = transaction.objectStore("contentTodo");
+
+    let request = OBJS.put(task); // put = add or update
+
+    request.onsuccess = () => {
+      console.log(`Task with id ${task.id} updated`);
+      res();
+    };
+
+    request.onerror = (e) => {
+      console.error("Error updating task:", e.target.error);
+      rej(e.target.error);
+    };
+  });
 }

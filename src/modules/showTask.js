@@ -1,7 +1,14 @@
 import { GTFDB, initDB } from "./createIndexDB/indexDB.js";
 function generatItemWithTimer(task) {
 return `
- <li class="border rounded-xl p-4 mb-4  ${task.isCompleted?"bg-green-200":"bg-white"}  shadow-sm flex " id='${task.id}'>
+ <li class="border rounded-xl p-4 mb-4  
+   ${task.isExpired 
+      ? "bg-green-200" 
+      : task.isCompleted 
+          ? "bg-green-200" 
+          : "bg-white"}  
+   shadow-sm flex " 
+   id='${task.id}'>
               <!-- check box -->
               <div class=" pt-4 pr-3" >
                 <input
@@ -28,18 +35,21 @@ return `
                       class="flex bg-cyan-100 text-gray-800 px-2 py-1 rounded text-[20px]"
                       >Countdown:
                       <b class="font-Laila ml-1">
-                        <span>${task.time.hourse}</span>
+                      ${task.time.hourse}
                         :
-                        <span>${task.time.min}</span>
+                      ${task.time.min}
                         :
-                        <span>${task.time.sec}</span>
+                      ${task.time.sec}
                       </b>
                     </span>
                     `:""
                    }
 
-                    <button
+                ${
+                  task.time?`
+                      <button
                       class="px-3 py-1 bg-gray-200 rounded hover:bg-gray-300 text-[20px] relative group"
+                      id="startAstop"
                     >
                       S&S
                       <div
@@ -47,7 +57,8 @@ return `
                       >
                         Start And Stop
                       </div>
-                    </button>
+                    </button>`:""
+                }
                     <button
                       class="px-3 py-1 bg-yellow-100 rounded hover:bg-yellow-200 text-[20px]"
                     >
