@@ -113,5 +113,5 @@ async function timerTask(e, conItem) {
   timers.set(id, timer);
   
 }
-
+export {timers};
 export default timerTask;
