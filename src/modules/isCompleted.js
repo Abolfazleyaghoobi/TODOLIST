@@ -41,7 +41,7 @@
 // //   }
 // // })
 import { initDB, GTFDB, updateTask } from "./createIndexDB/indexDB";
-import { showTask } from "./showTask";
+
 
 async function isCompleted(e) {
   const id = e.target.id;

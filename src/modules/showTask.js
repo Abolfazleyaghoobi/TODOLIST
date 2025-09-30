@@ -79,17 +79,9 @@ return `
                     <span class="font-semibold text-[25px] text-gray-800"
                       >Description</span
                     >
-                    <span class="text-gray-600">
-                      <img
-                        class="w-12  transition-all duration-500 " 
-                       
-                        src="./public/icons/icons8_collapse_arrow_1.svg"
-                        alt=""
-                      id="showDesc"
-                      />
-                    </span>
+              
                   </div>
-                  <p id="contentDescTask" class="text-[20px] text-gray-700 mt-2 h-0 overflow-hidden   transition-all duration-500">
+                  <p id="contentDescTask" class="text-[20px] text-gray-700 mt-2  overflow-hidden   transition-all duration-500">
                ${task.desc}
                   </p>
                 </div>

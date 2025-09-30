@@ -179,20 +179,20 @@ showTask(conItem);
 RemoveModule(conItem);
 // && show more desc icon
 conItem.addEventListener("click", (e) => {
-  if (e.target.id === "showDesc") {
-    const div = e.target.parentElement.parentElement;
-    const p = div.nextElementSibling;
+  // if (e.target.id === "showDesc") {
+  //   const div = e.target.parentElement.parentElement;
+  //   const p = div.nextElementSibling;
 
-    // چرخش آیکن
-    e.target.classList.toggle("rotate-180");
+  //   // چرخش آیکن
+  //   e.target.classList.toggle("rotate-180");
 
-    // باز و بسته کردن توضیحات
-    if (p.style.height && p.style.height !== "0px") {
-      p.style.height = "0px";
-    } else {
-      p.style.height = p.scrollHeight + "px";
-    }
-  }
+  //   // باز و بسته کردن توضیحات
+  //   if (p.style.height && p.style.height !== "0px") {
+  //     p.style.height = "0px";
+  //   } else {
+  //     p.style.height = p.scrollHeight + "px";
+  //   }
+  // }
 // initDB();
 
   isCompleted(e);

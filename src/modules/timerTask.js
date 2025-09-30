@@ -63,7 +63,7 @@ async function timerTask(e, conItem) {
   const tagB = e.target.previousElementSibling?.firstElementChild;
 
   if (!tagB) {
-    console.log("tagB پیدا نشد");
+ 
     return;
   }
 
@@ -77,7 +77,7 @@ async function timerTask(e, conItem) {
   if (timers.has(id)) {
     clearInterval(timers.get(id));
     timers.delete(id);
-    console.log(`⏸️ تایمر ${id} متوقف شد`);
+   
     return;
   }
 
@@ -111,7 +111,7 @@ async function timerTask(e, conItem) {
   }, 1000);
 
   timers.set(id, timer);
-  console.log(`▶️ تایمر ${id} شروع شد`);
+  
 }
 
 export default timerTask;
